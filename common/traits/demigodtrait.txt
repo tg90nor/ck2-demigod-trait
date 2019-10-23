@@ -1,0 +1,18 @@
+Demigod = {
+	  agnatic = yes
+	  random = no
+	  ruler_designer_cost = 34
+
+	  stewardship = 15
+	  diplomacy = 15
+	  martial = 30
+	  intrigue = 15
+	  learning = 15
+	  health = 100
+
+	  general_opinion = 50
+
+		ai_rationality = 30
+		ai_ambition = 50
+		ai_zeal = 30
+}

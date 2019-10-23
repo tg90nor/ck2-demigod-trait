@@ -1,0 +1,131 @@
+namespace = demi
+
+character_event = {
+  id = demi.1
+  hide_window = yes
+  is_triggered_only = yes
+
+  immediate = {
+    character_event = { id = demi.2 }
+    add_trait = Demigod
+    add_trait = genius
+    add_trait = strong
+    add_trait = master_warrior
+    add_trait = brave
+    add_trait = diligent
+    add_trait = ambitious
+    # remove diplomacy primary traits
+    remove_trait = naive_appeaser
+    remove_trait = underhanded_rogue
+    remove_trait = charismatic_negotiator
+    remove_trait = grey_eminence
+    # remove martial primary traits
+    remove_trait = misguided_warrior
+    remove_trait = tough_soldier
+    remove_trait = skilled_tactician
+    remove_trait = brilliant_strategist
+    # remove stewardship primary traits
+    remove_trait = indulgent_wastrel
+    remove_trait = thrifty_clerk
+    remove_trait = fortune_builder
+    remove_trait = midas_touched
+    # remove intrigue primary traits
+    remove_trait = amateurish_plotter
+    remove_trait = flamboyant_schemer
+    remove_trait = intricate_webweaver
+    remove_trait = elusive_shadow
+    # remove learning primary traits
+    remove_trait = detached_priest
+    remove_trait = martial_cleric
+    remove_trait = scholarly_theologian
+    remove_trait = mastermind_theologian
+    any_child {
+      character_event = { id = demi.2 }
+      add_trait = Demigod
+      add_trait = genius
+      add_trait = strong
+      add_trait = brave
+      add_trait = diligent
+    }
+    any_spouse {
+      character_event = { id = demi.2 }
+      add_trait = genius
+      add_trait = strong
+    }
+    any_consort {
+      character_event = { id = demi.2 }
+      add_trait = genius
+      add_trait = strong
+    }
+    character_event = { id = demi.3 }
+  }
+}
+
+# Remove bad traits
+character_event = {
+  id = demi.2
+  hide_window = yes
+  is_triggered_only = yes
+
+  immediate = {
+    remove_trait = dwarf
+    remove_trait = hunchback
+    remove_trait = ugly
+    remove_trait = inbred
+    remove_trait = clubfooted
+    remove_trait = gluttonous
+    remove_trait = slothful
+    remove_trait = lunatic
+    remove_trait = syphilitic
+    remove_trait = drunkard
+  }
+}
+
+character_event = {
+  id = demi.3
+  desc = "Which primary trait do you want?"
+  is_triggered_only = yes
+
+  option = {
+    name = "Brilliant Strategist (martial)"
+    hidden_tooltip = {
+      remove_trait = holy_warrior
+      remove_trait = heavy_infantry_leader
+    }
+    add_trait = brilliant_strategist
+    add_trait = logistics_expert
+    add_trait = inspiring_leader
+    add_trait = siege_leader
+  }
+  option = {
+    name = "Midas Touched (stewardship)"
+    add_trait = midas_touched
+  }
+  option = {
+    name = "Elusive Shadow (intrigue)"
+    add_trait = elusive_shadow
+  }
+  option = {
+    name = "More options"
+    character_event = { id = demi.4 }
+  }
+}
+
+character_event = {
+  id = demi.4
+  desc = "Which primary trait do you want?"
+  is_triggered_only = yes
+
+  option = {
+    name = "Grey Eminence (diplomacy)"
+    add_trait = grey_eminence
+  }
+  option = {
+    name = "Mastermind Theologian (learning)"
+    add_trait = mastermind_theologian
+  }
+  option = {
+    name = "Previous page"
+    character_event = { id = demi.3 }
+  }
+}
