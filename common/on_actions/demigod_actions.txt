@@ -1,0 +1,5 @@
+on_birth = {
+	events = {
+		demi.5
+	}
+}

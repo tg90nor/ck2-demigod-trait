@@ -39,7 +39,7 @@ character_event = {
     remove_trait = martial_cleric
     remove_trait = scholarly_theologian
     remove_trait = mastermind_theologian
-    any_child {
+    any_child = {
       character_event = { id = demi.2 }
       add_trait = Demigod
       add_trait = genius
@@ -47,12 +47,12 @@ character_event = {
       add_trait = brave
       add_trait = diligent
     }
-    any_spouse {
+    any_spouse = {
       character_event = { id = demi.2 }
       add_trait = genius
       add_trait = strong
     }
-    any_consort {
+    any_consort = {
       character_event = { id = demi.2 }
       add_trait = genius
       add_trait = strong
@@ -88,14 +88,7 @@ character_event = {
 
   option = {
     name = "Brilliant Strategist (martial)"
-    hidden_tooltip = {
-      remove_trait = holy_warrior
-      remove_trait = heavy_infantry_leader
-    }
     add_trait = brilliant_strategist
-    add_trait = logistics_expert
-    add_trait = inspiring_leader
-    add_trait = siege_leader
   }
   option = {
     name = "Midas Touched (stewardship)"
@@ -127,5 +120,30 @@ character_event = {
   option = {
     name = "Previous page"
     character_event = { id = demi.3 }
+  }
+}
+
+# triggered on_birth
+character_event = {
+  id = demi.5
+  hide_window = yes
+  is_triggered_only = yes
+
+  trigger = {
+    OR = {
+      true_father_even_if_dead = {
+        dynasty = ROOT
+        trait = Demigod
+      }
+      mother_even_if_dead = {
+        dynasty = ROOT
+        trait = Demigod
+      }
+    }
+    NOT = { trait = bastard }
+  }
+
+  immediate = {
+    add_trait = Demigod
   }
 }
