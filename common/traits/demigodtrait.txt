@@ -1,18 +1,20 @@
 Demigod = {
-	  agnatic = yes
-	  random = no
-	  ruler_designer_cost = 34
+	agnatic = yes
+	random = no
+	ruler_designer_cost = 40
 
-	  stewardship = 15
-	  diplomacy = 15
-	  martial = 30
-	  intrigue = 15
-	  learning = 15
-	  health = 100
+	stewardship = 15
+	diplomacy = 15
+	martial = 30
+	intrigue = 15
+	learning = 15
+	health = 50
+	combat_rating = 10
 
-	  general_opinion = 50
+	general_opinion = 50
 
-		ai_rationality = 30
-		ai_ambition = 50
-		ai_zeal = 30
+	ai_rationality = 30
+	ai_honor = 10
+	ai_ambition = 50
+	ai_zeal = 30
 }
