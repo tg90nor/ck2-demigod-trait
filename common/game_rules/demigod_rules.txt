@@ -1,0 +1,38 @@
+demigod_inheritance = {
+  name = DEMIGOD_INHERITANCE_RULE_NAME
+  group = DEMIGOD_INHERITANCE_RULE_GROUP
+  option = {
+    name = demigod_inheritance_patrilineal
+    text = DEMIGOD_INHERITANCE_PATRILINEAL_NAME
+    desc = DEMIGOD_INHERITANCE_PATRILINEAL_DESC
+  }
+  option = {
+    name = demigod_inheritance_matrilineal
+    text = DEMIGOD_INHERITANCE_MATRILINEAL_NAME
+    desc = DEMIGOD_INHERITANCE_MATRILINEAL_DESC
+  }
+  option = {
+    name = demigod_inheritance_both
+    text = DEMIGOD_INHERITANCE_BOTH_NAME
+    desc = DEMIGOD_INHERITANCE_BOTH_DESC
+  }
+  option = {
+    name = demigod_inheritance_none
+    text = DEMIGOD_INHERITANCE_NONE_NAME
+    desc = DEMIGOD_INHERITANCE_NONE_DESC
+  }
+}
+demigod_inheritance_bastards = {
+  name = DEMIGOD_INHERITANCE_BASTARDS_RULE_NAME
+  group = DEMIGOD_INHERITANCE_RULE_GROUP
+  option = {
+    name = demigod_inheritance_no_bastards
+    text = DEMIGOD_INHERITANCE_NO_BASTARDS_NAME
+    desc = DEMIGOD_INHERITANCE_NO_BASTARDS_DESC
+  }
+  option = {
+    name = demigod_inheritance_bastards
+    text = DEMIGOD_INHERITANCE_BASTARDS_NAME
+    desc = DEMIGOD_INHERITANCE_BASTARDS_DESC
+  }
+}

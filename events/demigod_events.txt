@@ -14,34 +14,9 @@ character_event = {
     add_trait = brave
     add_trait = diligent
     add_trait = ambitious
-    # remove diplomacy primary traits
-    remove_trait = naive_appeaser
-    remove_trait = underhanded_rogue
-    remove_trait = charismatic_negotiator
-    remove_trait = grey_eminence
-    # remove martial primary traits
-    remove_trait = misguided_warrior
-    remove_trait = tough_soldier
-    remove_trait = skilled_tactician
-    remove_trait = brilliant_strategist
-    # remove stewardship primary traits
-    remove_trait = indulgent_wastrel
-    remove_trait = thrifty_clerk
-    remove_trait = fortune_builder
-    remove_trait = midas_touched
-    # remove intrigue primary traits
-    remove_trait = amateurish_plotter
-    remove_trait = flamboyant_schemer
-    remove_trait = intricate_webweaver
-    remove_trait = elusive_shadow
-    # remove learning primary traits
-    remove_trait = detached_priest
-    remove_trait = martial_cleric
-    remove_trait = scholarly_theologian
-    remove_trait = mastermind_theologian
     any_child = {
       character_event = { id = demi.2 }
-      add_trait = Demigod
+      character_event = { id = demi.5 }
       add_trait = genius
       add_trait = strong
       add_trait = brave
@@ -68,23 +43,62 @@ character_event = {
   is_triggered_only = yes
 
   immediate = {
-    remove_trait = dwarf
-    remove_trait = hunchback
-    remove_trait = ugly
-    remove_trait = inbred
+    # genetic
     remove_trait = clubfooted
+    remove_trait = harelip
+    remove_trait = hunchback
+    remove_trait = lisp
+    remove_trait = stutter
+    remove_trait = ugly
+    remove_trait = dwarf
+    remove_trait = slow
+    remove_trait = imbecile
+    remove_trait = inbred
+    remove_trait = weak
+    # personality
     remove_trait = gluttonous
     remove_trait = slothful
+    remove_trait = shy
+    # health
     remove_trait = lunatic
     remove_trait = syphilitic
     remove_trait = drunkard
   }
 }
 
+# Choose education trait
 character_event = {
   id = demi.3
-  desc = "Which primary trait do you want?"
+  desc = DEMI_3_EVTDESC
   is_triggered_only = yes
+
+  immediate = {
+    # remove diplomacy primary traits
+    remove_trait = naive_appeaser
+    remove_trait = underhanded_rogue
+    remove_trait = charismatic_negotiator
+    remove_trait = grey_eminence
+    # remove martial primary traits
+    remove_trait = misguided_warrior
+    remove_trait = tough_soldier
+    remove_trait = skilled_tactician
+    remove_trait = brilliant_strategist
+    # remove stewardship primary traits
+    remove_trait = indulgent_wastrel
+    remove_trait = thrifty_clerk
+    remove_trait = fortune_builder
+    remove_trait = midas_touched
+    # remove intrigue primary traits
+    remove_trait = amateurish_plotter
+    remove_trait = flamboyant_schemer
+    remove_trait = intricate_webweaver
+    remove_trait = elusive_shadow
+    # remove learning primary traits
+    remove_trait = detached_priest
+    remove_trait = martial_cleric
+    remove_trait = scholarly_theologian
+    remove_trait = mastermind_theologian
+  }
 
   option = {
     name = "Brilliant Strategist (martial)"
@@ -103,7 +117,7 @@ character_event = {
     character_event = { id = demi.4 }
   }
 }
-
+# Choose education trait (cont. from prev. event)
 character_event = {
   id = demi.4
   desc = "Which primary trait do you want?"
@@ -123,6 +137,7 @@ character_event = {
   }
 }
 
+# Trait inheritance event
 # triggered on_birth
 character_event = {
   id = demi.5
@@ -132,18 +147,177 @@ character_event = {
   trigger = {
     OR = {
       true_father_even_if_dead = {
-        dynasty = ROOT
         trait = Demigod
       }
       mother_even_if_dead = {
-        dynasty = ROOT
         trait = Demigod
       }
     }
-    NOT = { trait = bastard }
   }
 
   immediate = {
-    add_trait = Demigod
+    # patrilineal no bastards
+    if = {
+      limit = {
+        has_game_rule = {
+          name = demigod_inheritance
+          value = demigod_inheritance_patrilineal
+        }
+        has_game_rule = {
+          name = demigod_inheritance_bastards
+          value = demigod_inheritance_no_bastards
+        }
+        true_father_even_if_dead = {
+          dynasty = ROOT
+          trait = Demigod
+        }
+        NOT = {
+          trait = bastard
+        }
+      }
+      add_trait = Demigod
+    }
+    # patrilineal w/ bastards
+    else_if = {
+      limit = {
+        has_game_rule = {
+          name = demigod_inheritance
+          value = demigod_inheritance_patrilineal
+        }
+        has_game_rule = {
+          name = demigod_inheritance_bastards
+          value = demigod_inheritance_bastards
+        }
+        true_father_even_if_dead = {
+          trait = Demigod
+        }
+      }
+      add_trait = Demigod
+    }
+    # matrilineal no bastards
+    if = {
+      limit = {
+        has_game_rule = {
+          name = demigod_inheritance
+          value = demigod_inheritance_matrilineal
+        }
+        has_game_rule = {
+          name = demigod_inheritance_bastards
+          value = demigod_inheritance_no_bastards
+        }
+        mother_even_if_dead = {
+          dynasty = ROOT
+          trait = Demigod
+        }
+        NOT = {
+          trait = bastard
+        }
+      }
+      add_trait = Demigod
+    }
+    # matrilineal w/ bastards
+    else_if = {
+      limit = {
+        has_game_rule = {
+          name = demigod_inheritance
+          value = demigod_inheritance_patrilineal
+        }
+        has_game_rule = {
+          name = demigod_inheritance_bastards
+          value = demigod_inheritance_bastards
+        }
+        mother_even_if_dead = {
+          trait = Demigod
+        }
+      }
+      add_trait = Demigod
+    }
+    # both no bastards
+    if = {
+      limit = {
+        has_game_rule = {
+          name = demigod_inheritance
+          value = demigod_inheritance_both
+        }
+        has_game_rule = {
+          name = demigod_inheritance_bastards
+          value = demigod_inheritance_no_bastards
+        }
+        OR = {
+          true_father_even_if_dead = {
+            dynasty = ROOT
+            trait = Demigod
+          }
+          mother_even_if_dead = {
+            dynasty = ROOT
+            trait = Demigod
+          }
+        }
+        NOT = {
+          trait = bastard
+        }
+      }
+      add_trait = Demigod
+    }
+    # both w/ bastards
+    else_if = {
+      limit = {
+        has_game_rule = {
+          name = demigod_inheritance
+          value = demigod_inheritance_both
+        }
+        has_game_rule = {
+          name = demigod_inheritance_bastards
+          value = demigod_inheritance_bastards
+        }
+        OR = {
+          true_father_even_if_dead = {
+            trait = Demigod
+          }
+          mother_even_if_dead = {
+            trait = Demigod
+          }
+        }
+      }
+      add_trait = Demigod
+    }
+  }
+}
+
+# Glitterhoof's favourite traits
+character_event = {
+  id = demi.42
+  hide_window = yes
+  is_triggered_only = yes
+
+  immediate = {
+    character_event = { id = demi.1 }
+
+    add_trait = gregarious
+
+    # Remove undesired leader traits
+    remove_trait = light_foot_leader
+    remove_trait = heavy_infantry_leader
+    remove_trait = cavalry_leader
+    remove_trait = trickster
+    remove_trait = organizer
+    remove_trait = defensive_leader
+    remove_trait = flanker
+    remove_trait = aggressive_leader
+    remove_trait = flat_terrain_leader
+    remove_trait = rough_terrain_leader
+    remove_trait = mountain_terrain_leader
+    remove_trait = desert_terrain_leader
+    remove_trait = holy_warrior
+    remove_trait = unyielding_leader
+    remove_trait = narrow_flank_leader
+    remove_trait = war_elephant_leader
+    remove_trait = jungle_terrain_leader
+    remove_trait = back_seat_leader
+
+    # Add leader traits
+    add_trait = inspiring_leader
+    add_trait = experimenter
+    add_trait = siege_leader
   }
 }

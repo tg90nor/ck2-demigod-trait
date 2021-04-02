@@ -1,2 +1,18 @@
 Demigod;Demigod;Demigod;Demigod;;Demigod;;;;;;;;;x;;;;
 Demigod_desc;This character is the descendant of a god.;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_RULE_GROUP;Demigod Inheritance;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_RULE_NAME;Demigod gender inheritance;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_BASTARDS_RULE_NAME;Demigod bastard inheritance;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_PATRILINEAL_NAME;Patrilineal inheritance;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_PATRILINEAL_DESC;The Demigod trait is inherited patrilineally (from father to children of any gender).;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_MATRILINEAL_NAME;Matrilineal inheritance;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_MATRILINEAL_DESC;The Demigod trait is inherited matrilineally (from mother to children of any gender).;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_BOTH_NAME;Both;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_BOTH_DESC;The Demigod trait is inherited from any parent with the trait, regardless of gender.;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_NONE_NAME;None;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_NONE_DESC;No children will inherit the trait.;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_NO_BASTARDS_NAME;No bastards;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_NO_BASTARDS_DESC;Only legitimate children of the dynasty of the parent with the trait inherits it.;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_BASTARDS_NAME;Bastards allowed;;;;;;;;;;;;;;;;;x
+DEMIGOD_INHERITANCE_BASTARDS_DESC;Bastards are eligible to inherit the trait.;;;;;;;;;;;;;;;;;x
+DEMI_3_EVTDESC;Which education trait do you want?;;;;;;;;;;;;;;;;;x
