@@ -7,8 +7,8 @@ Demigod = {
 	martial = 30
 	intrigue = 15
 	learning = 15
-	health = 50
-	combat_rating = 10
+	health = 10
+	combat_rating = 20
 
 	general_opinion = 50
 
